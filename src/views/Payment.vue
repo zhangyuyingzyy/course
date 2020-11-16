@@ -645,28 +645,6 @@ export default {
                   }
 
                   this.paySuccessF();
-
-                  // setTimeout(() => {
-                  //   MessageBox({
-                  //     title: "请确认支付是否已完成",
-                  //     message: "",
-                  //     confirmButtonText: "已完成支付",
-                  //     cancelButtonText: "重新支付",
-                  //     showCancelButton: true,
-                  //   }).then((action) => {
-                  //     if (action == "confirm") {
-                  //       //确认的回调
-                  //       this.$router.push({
-                  //         path: "/paymentsuccess",
-                  //         query: {
-                  //           token: this.token,
-                  //           orderCode: res.data.data.ordercode,
-                  //           payMethodFlag: this.payMethodFlag,
-                  //         },
-                  //       });
-                  //     }
-                  //   });
-                  // }, 1000);
                   // console.log(this.isPay, "-----------this.isPay");
                 } else if (this.payMethodFlag == "2") {
                   //支付宝支付
@@ -686,33 +664,6 @@ export default {
                       res.data.data.android_alipay_url
                     );
                     this.paySuccessF();
-
-                    // if (this.isPay == "1") {
-                    //   clearInterval(this.timer);
-                    //   this.$router.push({
-                    //     path: "/paymentsuccess",
-                    //     query: {
-                    //       token: this.token,
-                    //       orderCode: res.data.data.ordercode,
-                    //       payMethodFlag: this.payMethodFlag,
-                    //     },
-                    //   });
-                    // } else {
-                    //   this.timer = setInterval(() => {
-                    //     this.isPayArray();
-                    //     if (this.isPay == "1") {
-                    //       clearInterval(this.timer);
-                    //       this.$router.push({
-                    //         path: "/paymentsuccess",
-                    //         query: {
-                    //           token: this.token,
-                    //           orderCode: res.data.data.ordercode,
-                    //           payMethodFlag: this.payMethodFlag,
-                    //         },
-                    //       });
-                    //     }
-                    //   }, 1000);
-                    // }
                   }
                   if (isIOS) {
                     // window.location.href = res.data.data.ios_alipay_url;
@@ -722,32 +673,6 @@ export default {
                       payUrl: res.data.data.ios_alipay_url,
                     });
                     this.paySuccessF();
-                    // if (this.isPay == "1") {
-                    //   clearInterval(this.timer);
-                    //   this.$router.push({
-                    //     path: "/paymentsuccess",
-                    //     query: {
-                    //       token: this.token,
-                    //       orderCode: res.data.data.ordercode,
-                    //       payMethodFlag: this.payMethodFlag,
-                    //     },
-                    //   });
-                    // } else {
-                    //   this.timer = setInterval(() => {
-                    //     this.isPayArray();
-                    //     if (this.isPay == "1") {
-                    //       clearInterval(this.timer);
-                    //       this.$router.push({
-                    //         path: "/paymentsuccess",
-                    //         query: {
-                    //           token: this.token,
-                    //           orderCode: res.data.data.ordercode,
-                    //           payMethodFlag: this.payMethodFlag,
-                    //         },
-                    //       });
-                    //     }
-                    //   }, 1000);
-                    // }
                   }
 
                   // this.alipayWap = res.data;
@@ -771,40 +696,7 @@ export default {
                   // }, 1000);
                 } else if (this.payMethodFlag == "3") {
                   //余额支付
-
-                  // Indicator.open({
-                  //   text: "加载中...",
-                  //   spinnerType: "fading-circle",
-                  // });
-                  // console.log(this.isPay, "----------------this.isPay");
                   this.paySuccessF();
-                  // if (this.isPay == "1") {
-                  //   // Indicator.close();
-                  //   clearInterval(this.timer);
-                  //   this.$router.push({
-                  //     path: "/paymentsuccess",
-                  //     query: {
-                  //       token: this.token,
-                  //       orderCode: res.data.data.ordercode,
-                  //       payMethodFlag: this.payMethodFlag,
-                  //     },
-                  //   });
-                  // } else {
-                  //   this.timer = setInterval(() => {
-                  //     this.isPayArray();
-                  //     if (this.isPay == "1") {
-                  //       clearInterval(this.timer);
-                  //       this.$router.push({
-                  //         path: "/paymentsuccess",
-                  //         query: {
-                  //           token: this.token,
-                  //           orderCode: res.data.data.ordercode,
-                  //           payMethodFlag: this.payMethodFlag,
-                  //         },
-                  //       });
-                  //     }
-                  //   }, 1000);
-                  // }
                 }
               } else {
                 this.orderCode = res.data.data.ordercode;
@@ -813,33 +705,6 @@ export default {
                   duration: 2000,
                 });
                 this.paySuccessF();
-                // if (this.isPay == "1") {
-                //   // Indicator.close();
-                //   clearInterval(this.timer);
-                //   this.$router.push({
-                //     path: "/paymentsuccess",
-                //     query: {
-                //       token: this.token,
-                //       orderCode: res.data.data.ordercode,
-                //       payMethodFlag: this.payMethodFlag,
-                //     },
-                //   });
-                // } else {
-                //   this.timer = setInterval(() => {
-                //     this.isPayArray();
-                //     if (this.isPay == "1") {
-                //       clearInterval(this.timer);
-                //       this.$router.push({
-                //         path: "/paymentsuccess",
-                //         query: {
-                //           token: this.token,
-                //           orderCode: res.data.data.ordercode,
-                //           payMethodFlag: this.payMethodFlag,
-                //         },
-                //       });
-                //     }
-                //   }, 1000);
-                // }
               }
 
               // console.log(res.data);
@@ -865,13 +730,11 @@ export default {
       var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
       var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
       if (isAndroid) {
-        // console.log(isAndroid, "--------------------isAndroid");
         window.injectedObject.notice({
           action: "recharge",
         });
       }
       if (isIOS) {
-        // console.log(isIOS, "--------------------isIOS");
         window.webkit.messageHandlers.notice.postMessage({
           action: "recharge",
         });
@@ -895,10 +758,6 @@ export default {
           var newDate = [];
           this.paymentArray.paints.forEach((val, index) => {
             if (!(this.paintingArr.indexOf(index) > -1)) {
-              // console.log(
-              //   this.paintingArr.indexOf(index),
-              //   "------------删除22222"
-              // );
               newDate.push(val);
               var newCountPaint = [];
               newCountPaint = newCountPaint.concat(this.checkPaintingArr);
