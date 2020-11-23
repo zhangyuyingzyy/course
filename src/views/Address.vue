@@ -51,17 +51,6 @@ export default {
     };
   },
   methods: {
-    //点击任意地方取消picker
-    // boxBlock() {
-    //   if (!event.target.closest(".cityDiv")) {
-    //     this.addressShow = false;
-    //   }
-    //   console.log(event.target,'----------cityDiv')
-    // },
-    //选择城市
-    // changeCity() {
-    //   this.addressShow = true;
-    // },
     //picker确定
     confirmFn(e) {
       this.addressShow = false;

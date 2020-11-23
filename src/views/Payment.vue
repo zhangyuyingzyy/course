@@ -623,12 +623,10 @@ export default {
               }
             )
             .then((res) => {
-              // console.log(res.data, "--------------支付方式");
               if (res.data.code == "200") {
                 this.orderCode = res.data.data.ordercode;
                 if (this.payMethodFlag == "1") {
                   //微信支付
-                  // window.location.href = res.data.data.mweb_url;
                   var u = navigator.userAgent,
                     app = navigator.appVersion;
                   var isAndroid =
@@ -645,7 +643,6 @@ export default {
                   }
 
                   this.paySuccessF();
-                  // console.log(this.isPay, "-----------this.isPay");
                 } else if (this.payMethodFlag == "2") {
                   //支付宝支付
                   // this.alipayApp(res.data, (result) => {
@@ -659,41 +656,18 @@ export default {
                     u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                   var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                   if (isAndroid) {
-                    // window.location.href = res.data.data.android_alipay_url;
                     window.injectedObject.openToPay(
                       res.data.data.android_alipay_url
                     );
                     this.paySuccessF();
                   }
                   if (isIOS) {
-                    // window.location.href = res.data.data.ios_alipay_url;
-
                     window.webkit.messageHandlers.notice.postMessage({
                       action: "alipayPay",
                       payUrl: res.data.data.ios_alipay_url,
                     });
                     this.paySuccessF();
                   }
-
-                  // this.alipayWap = res.data;
-                  // const div = document.createElement("div");
-                  // div.setAttribute("id", "alipay-wap");
-                  // div.innerHTML = res.data; //返回的表单
-                  // document.body.appendChild(div);
-                  // document.forms.alipaysubmit.submit();
-
-                  // _this.alipayWap = _msg.content;
-                  // let div = document.createElement('div');
-                  // div.setAttribute('id', 'alipay-wap');
-                  // /* 此处form就是后台返回接收到的数据 */
-                  // div.innerHTML = _msg.content;
-                  // document.body.appendChild(div);
-                  // document.forms['alipay_submit'].submit();
-                  // setTimeout(() => {
-                  //   this.alipayWap = "";
-                  //   document.getElementById("alipay-wap").remove(); // 拉起支付宝后移除dom
-                  //   // $('#alipay-wap').remove(); // 拉起支付宝后移除dom
-                  // }, 1000);
                 } else if (this.payMethodFlag == "3") {
                   //余额支付
                   this.paySuccessF();
@@ -706,9 +680,6 @@ export default {
                 });
                 this.paySuccessF();
               }
-
-              // console.log(res.data);
-              // this.paymentArray = res.data.data;
             })
             .catch((err) => {
               console.log(err);
@@ -730,11 +701,13 @@ export default {
       var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
       var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
       if (isAndroid) {
+        // console.log(isAndroid, "--------------------isAndroid");
         window.injectedObject.notice({
           action: "recharge",
         });
       }
       if (isIOS) {
+        // console.log(isIOS, "--------------------isIOS");
         window.webkit.messageHandlers.notice.postMessage({
           action: "recharge",
         });
@@ -743,7 +716,6 @@ export default {
 
     //删除
     delBtn() {
-      // console.log(this.paintingArr, this.checkPaintingArr, "删除");
       if (this.checkPaintingArr.length == "") {
         Toast({
           message: "您还没有选择商品",
@@ -758,6 +730,10 @@ export default {
           var newDate = [];
           this.paymentArray.paints.forEach((val, index) => {
             if (!(this.paintingArr.indexOf(index) > -1)) {
+              // console.log(
+              //   this.paintingArr.indexOf(index),
+              //   "------------删除22222"
+              // );
               newDate.push(val);
               var newCountPaint = [];
               newCountPaint = newCountPaint.concat(this.checkPaintingArr);
@@ -817,7 +793,6 @@ export default {
           }
         )
         .then((res) => {
-          // console.log(res, "--------res");
           this.paymentArray = res.data.data;
           this.orderPrice = res.data.data.order_price;
           this.changeAddress = res.data.data.address;
@@ -893,7 +868,6 @@ export default {
     this.changeAddress = changeAddressArr;
 
     let addressId = JSON.parse(localStorage.getItem("addressInfo") || "[]");
-    // console.log(addressId, "---------addressId123456");
     this.addressId = addressId;
 
     if (changeAddressArr.length == "") {

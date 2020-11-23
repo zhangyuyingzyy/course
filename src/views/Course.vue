@@ -33,6 +33,7 @@ import { Toast } from "mint-ui";
 // import { MessageBox } from 'mint-ui';
 import QRCode from "qrcode";
 import html2canvas from "html2canvas";
+// import api from '../utils/api/api'
 export default {
   data() {
     return {
@@ -96,6 +97,15 @@ export default {
   methods: {
     //课程详情
     async imgArray() {
+      // await api.postFormAPI("/comm/comm/course_detail_h5",{
+      //       token: this.token,
+      //       commodity_id: this.commodityId,
+      //       terminal: 2,
+      //     }).then(res => {
+      //     //数据处理
+      //     console.log(res);
+      //     this.classArray = res.data.data;
+      //   }).catch(err => console.log(err))
       await this.$axios
         .post(
           "/comm/comm/course_detail_h5",
